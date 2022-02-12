@@ -1,0 +1,45 @@
+<div class=" container h-100">
+    <div class="border">
+        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp" class="img-fluid" alt="Sample image">
+        <div class="text center"><h3 >LOGIN </h3></div> 
+        
+        <hr>
+
+        <form [formGroup]="loginForm" (ngSubmit)="loginCredentials()">
+            <div class="form-group">
+                <p>
+                    <input class="form-control" type="text" formControlName="username" placeholder="userName" name="username"
+                    minlength="2" required [ngClass]="{'is-invalid':formControls.username.touched && formControls.username.invalid}"/>
+                    
+                </p>
+            </div>
+            <div *ngIf="isSubmitted && formControls.username.errors">
+                <div *ngIf="formControls.username.errors">
+                    <span style="color: red;">
+                        UserName Required
+                    </span>
+                </div>
+            </div>
+            
+            <div>
+                <p>
+                    <input class="form-control" type="password" formControlName="userpassword" placeholder="Password" name=" userpassword"
+                    required [ngClass]="{'is-invalid':formControls.userpassword.touched && formControls.userpassword.invalid}"/>     
+                </p>
+            </div>
+            <div *ngIf="isSubmitted && formControls.userpassword.errors">
+                <div *ngIf="formControls.userpassword.errors">
+                    <span style="color: red;">
+                        Password Required
+                    </span>
+                </div>
+            </div>
+            <button class="btn btn-primary">Login</button>
+            
+            <div *ngIf="errors">
+                {{errors}}
+            </div>
+
+        </form>
+    </div>
+</div>

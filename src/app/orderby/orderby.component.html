@@ -1,0 +1,41 @@
+<div class=" text-white w-100 h-100 p-3" style="background-color: aliceblue;height: 100%;">
+    <div class=" bg-dark text-white w-100 p-3 "> 
+        <h3> Billing System </h3> </div>
+        <br>
+    <input type="text" [(ngModel)]="filter" class="form-control" placeholder="Search text Here" /> 
+    <br>
+    <br>
+    <table class="table  table-info table-bordered h-100">
+        <thead>
+            <tr>
+                <th>Productcode</th>
+                <th>Quantity  </th>
+                <th>Rate Per Unit </th>
+                <th>Product Description </th>
+                <th>category Id </th>
+                <th>category Name </th>
+                <th> Actions </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let pro of listProducts  |filter:filter | paginate: { itemsPerPage: 5, currentPage: page }">
+               <td>{{pro.product_code}}</td>
+               <td>{{pro.qty}}</td>            
+               <td>{{pro.rate_per_unit}}</td>
+               <td>{{pro.product_description}}</td>
+               <td>{{pro.category_id}}</td>
+               <td>{{pro.CategoryName}}</td>
+               
+              
+                <button class="btn btn-sm btn-primary" (click)="Updateproduct(pro.ProductCode)">Edit</button>
+                &nbsp; &nbsp; &nbsp;
+                <button class="btn btn-sm btn-danger" (click)="delete(pro.Productcode)">X</button>
+               
+               
+            </tr>
+              <pagination-controls (pageChange)="page = $event"></pagination-controls>  
+        </tbody>
+    </table>
+    
+    
+</div>

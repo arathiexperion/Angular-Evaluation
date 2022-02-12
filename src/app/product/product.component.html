@@ -1,0 +1,75 @@
+<section class="vh-100 gradient-custom">
+<div class="container-fluid-lg pt-5 mt-10  text-white h-100 ">
+    <div class=" bg-dark text-white w-100 p-3 "> 
+        <h3> Billing System </h3> </div>
+    <div class="row">
+        <div class="container col-6 justify-content-center align-items-center h-100 text-dark border"
+        style="margin-top: 10%;margin-left: 10%;margin-right: 10%;">
+        <div class="container-lg  bg-primary text-white text-center">
+            <h1 > Product Details</h1>
+        </div>
+            <form class="align-items-center margin"name="proform" #form="ngForm" autocomplete="off" 
+            (ngSubmit)="onSubmit(form)">
+
+                <input type="hidden" name="Productcode" [(ngModel)]="productservice.formData.ProductCode">
+                <div class="form-group">
+                    <label style="font-size: large"><h3>Quantity</h3> </label>
+                    <input type="text" name="Qty" #Qty="ngModel" [(ngModel)]="productservice.formData.Qty"
+                        class="form-control text-dark" placeholder="Enter quantity" required
+                        [ngClass]="{'is-invalid': Qty.touched && Qty.invalid}">
+
+                    <div class="validation-error" *ngIf="Qty.touched && Qty.invalid ">
+                        <div *ngIf="Qty.errors.required">
+                            quantity is required
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label><h3>Product Description </h3> </label>
+                    <input type="text" name="product_description" #product_description="ngModel"
+                        [(ngModel)]="productservice.formData.product_description" class="form-control" required
+                        [ngClass]="{'is-invalid': product_description.touched && product_description.invalid}">
+
+
+                    <div class="validation-error" *ngIf="product_description.touched && product_description.invalid ">
+                        <div *ngIf="product_description.errors.required">
+                            Description required
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label><h3>Rate Per Unit</h3></label>
+                    <input type="text" name="RatePerUnit" #RatePerUnit="ngModel"
+                        [(ngModel)]="productservice.formData.RatePerUnit" class="form-control" required
+                        [ngClass]="{'is-invalid': RatePerUnit.touched && RatePerUnit.invalid}">
+                    <div class="validation-error" *ngIf="RatePerUnit.touched && RatePerUnit.invalid ">
+                        <div *ngIf="RatePerUnit.errors.required">
+                            RatePerUnit required
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label> <h3>Category </h3> </label>
+                    <br>
+                    <input type="radio" value="mobile_phone" name="mobile" ngModel> 
+                    <h4>Mobile Phone </h4>
+                    
+                    <input type="radio" value="hard_disk" name="harddisk" ngModel>
+                    <h4> Hard Disc</h4>
+                    
+                    <input type="radio" value="laptop" name="laptop" ngModel> <h4>Lap Top</h4>
+                    
+                </div>
+
+                <br>
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-lg btn-primary form-control"> submit</button>
+                </div>
+            </form>
+           </div>
+        </div>
+        </div>
+        </section>
+        
